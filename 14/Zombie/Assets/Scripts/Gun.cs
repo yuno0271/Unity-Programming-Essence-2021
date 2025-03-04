@@ -61,12 +61,13 @@ public class Gun : MonoBehaviour
     // 발사 시도
     public void Fire()
     {
+        Debug.Log("Fire");
         // 현재 상태가 발사 가능한 상태
         // && 마지막 총 발사 시점에서 gunData.timeBetFire 이상의 시간이 지남.
-        if(state == State.Ready && Time.deltaTime >= lastFireTime + gunData.timeBetFire)
+        if (state == State.Ready && Time.time >= lastFireTime + gunData.timeBetFire)
         {
             // 마지막 총 발사 시점 갱신
-            lastFireTime = Time.deltaTime;
+            lastFireTime = Time.time;
             // 실제 발사 처리 실행
             Shot();
         }
